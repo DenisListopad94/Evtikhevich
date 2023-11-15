@@ -1,3 +1,4 @@
+import math
 # 1
 print(17 / 2 * 3 + 2)
 
@@ -71,11 +72,11 @@ print(ten_dollar, '$10 bills')
 print(one_dollar, '$1 bills')
 
 # 10
-h = 15
+h = 10
 x = 5
 y = 3
-days = (h - x) // (x - y)
-print('On day', days + 1, 'the snail will crawl to the top of', h, 'meters long pole')
+days = math.ceil((h - x) / (x - y)) + 1
+print('On day', days, 'the snail will crawl to the top of', h, 'meters long pole')
 
 # 11
 road_length = 56

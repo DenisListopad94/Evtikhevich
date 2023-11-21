@@ -88,3 +88,7 @@ print(school)
 # г) Вычислите общее количество учащихся 9 классов в школе.
 
 print("Total number of 9th grade students in the school =", school.get("9a") + school.get("9b"))
+
+print(school["9a"] + school["9b"])
+print(school)
+print(list(school.values())[6] + list(school.values())[7])

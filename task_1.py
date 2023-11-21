@@ -1,4 +1,4 @@
-import math
+from math import ceil
 # 1
 print(17 / 2 * 3 + 2)
 

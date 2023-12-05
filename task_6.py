@@ -149,7 +149,7 @@
 #     else:
 #         print(check_variable(some_str))
 # 11.	*Сгенерировать список всех простых чисел до  100.
-# number = 100
-# print([numb for numb in range(2, number + 1) if all(numb % i != 0 for i in range(2, int(numb // 2) + 1))])
+number = 100
+print([numb for numb in range(2, number + 1) if all(numb % i != 0 for i in range(2, int(numb // 2) + 1))])
 
 

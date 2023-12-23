@@ -54,7 +54,23 @@
 # # 4.	Исключить из строки группы символов, расположенные между первыми символами '{' и '}' вместе
 # # со скобками. Если нет символа '}', то исключить все символы до конца строки после '{'.
 # # Вывести символ, наиболее часто встречающийся в строке.
-# # .
+some_string = "Some text with {text which we have to delete} and we get clear text"
+if '{' in some_string:
+    start = some_string.find('{')
+    result = some_string[:start] if '}' not in some_string else (
+            some_string[:start] + some_string[some_string.find('}') + 1:])
+    print(result)
+else:
+    print(f"There is no '{{' in the string: '{some_string}'")
+letters = {}
+
+for letter in some_string:
+    if letter != ' ':
+        letters[letter] = letters.get(letter, 0) + 1
+
+max_key = max(letters, key=letters.get)
+print("Letter Counts:", letters)
+print("Character with Maximum Count:", max_key)
 #
 # # 5.	Ваш отдел работает над приложением, обращающимся к некоторому серверу. Вам поручили реализовать
 # # некоторые запросы: GET, POST и DELETE. В контексте вашего приложения
@@ -248,52 +264,52 @@
 # 2.	Задача на взаимодействие между классами. Разработать систему «Вступительные экзамены».
 # Абитуриент регистрируется на Факультет, сдает Экзамены. Преподаватель выставляет Оценку.
 # Система подсчитывает средний бал и определяет Абитуриента, зачисленного в учебное заведение.
-class Applicant:
-    def __init__(self, name):
-        self.name = name
-        self.exam_scores = []
-
-    def take_exam(self, scores):
-        self.exam_scores.extend(scores)
-
-    def define_average_score(self):
-        return sum(self.exam_scores) / len(self.exam_scores) if self.exam_scores else 0
-
-
-class Faculty:
-    def __init__(self, faculty_name, passing_grade):
-        self.faculty_name = faculty_name
-        self.passing_grade = passing_grade
-        self.applicants = []
-
-    def register_applicant(self, applicant):
-        self.applicants.append(applicant)
-
-    def assign_scores(self, applicant, scores):
-        applicant.take_exam(scores)
-        print(f"Scores assigned to {applicant.name}: {', '.join(map(str, applicant.exam_scores))}")
-
-class EntranceExam:
-    @staticmethod
-    def determine_enrollment(applicant, faculty):
-        average_score = applicant.define_average_score()
-        if average_score >= faculty.passing_grade:
-            print(f"Applicant {applicant.name} is enrolled in the {faculty.faculty_name} faculty")
-        else:
-            print(f"Applicant {applicant.name} was not enrolled in the {faculty.faculty_name} faculty")
-
-applicant1 = Applicant("Artem")
-applicant2 = Applicant("Ivan")
-
-faculty_it = Faculty("Information Technologies", 85)
-faculty_csn = Faculty("Computer Systems and Networks", 75)
-
-faculty_it.register_applicant(applicant1)
-faculty_csn.register_applicant(applicant2)
-
-faculty_it.assign_scores(applicant1, [79, 88, 90])
-faculty_csn.assign_scores(applicant2, [65, 75, 68])
-
-EntranceExam.determine_enrollment(applicant1, faculty_it)
-EntranceExam.determine_enrollment(applicant2, faculty_csn)
+# class Applicant:
+#     def __init__(self, name):
+#         self.name = name
+#         self.exam_scores = []
+#
+#     def take_exam(self, scores):
+#         self.exam_scores.extend(scores)
+#
+#     def define_average_score(self):
+#         return sum(self.exam_scores) / len(self.exam_scores) if self.exam_scores else 0
+#
+#
+# class Faculty:
+#     def __init__(self, faculty_name, passing_grade):
+#         self.faculty_name = faculty_name
+#         self.passing_grade = passing_grade
+#         self.applicants = []
+#
+#     def register_applicant(self, applicant):
+#         self.applicants.append(applicant)
+#
+#     def assign_scores(self, applicant, scores):
+#         applicant.take_exam(scores)
+#         print(f"Scores assigned to {applicant.name}: {', '.join(map(str, applicant.exam_scores))}")
+#
+# class EntranceExam:
+#     @staticmethod
+#     def determine_enrollment(applicant, faculty):
+#         average_score = applicant.define_average_score()
+#         if average_score >= faculty.passing_grade:
+#             print(f"Applicant {applicant.name} is enrolled in the {faculty.faculty_name} faculty")
+#         else:
+#             print(f"Applicant {applicant.name} was not enrolled in the {faculty.faculty_name} faculty")
+#
+# applicant1 = Applicant("Artem")
+# applicant2 = Applicant("Ivan")
+#
+# faculty_it = Faculty("Information Technologies", 85)
+# faculty_csn = Faculty("Computer Systems and Networks", 75)
+#
+# faculty_it.register_applicant(applicant1)
+# faculty_csn.register_applicant(applicant2)
+#
+# faculty_it.assign_scores(applicant1, [79, 88, 90])
+# faculty_csn.assign_scores(applicant2, [65, 75, 68])
+#
+# EntranceExam.determine_enrollment(applicant1, faculty_it)
+# EntranceExam.determine_enrollment(applicant2, faculty_csn)
 
